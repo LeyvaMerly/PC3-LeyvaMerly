@@ -1,0 +1,157 @@
+$color-primario: rgb(17, 67, 206);
+$color-secundario: rgb(220, 226, 238);
+$color-fondo: #f4f7fc;
+$color-texto: #333333;
+
+
+@mixin vendor-transform($val) {
+    -webkit-transform: $val;
+    -moz-transform: $val;
+    transform: $val;
+}
+
+@mixin vendor-animation($params) {
+    -webkit-animation: $params;
+    -moz-animation: $params;
+    animation: $params;
+}
+
+
+body {
+    font-family: sans-serif;
+    background-color: $color-fondo;
+    color: $color-texto;
+    margin: 0;
+    padding: 0;
+}
+
+.cabecera-principal {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+
+    h1 {
+        margin: 0;
+        color: $color-primario;
+    }
+}
+
+// PREGUNTA 1: 
+@keyframes subrayar {
+    from {
+        background-size: 0% 3px;
+    }
+
+    to {
+        background-size: 100% 4px;
+    }
+}
+
+.menu-navegacion {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+
+
+
+// PREGUNTA 3:
+    @supports (position: sticky) or (position: -webkit-sticky) {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    a {
+        display: flex;
+        padding: 10px 40px;
+        background-color: $color-primario;
+        color: white;
+        font-weight: 300;
+        text-decoration: none;
+        border-radius: 5px;
+
+        background-image: linear-gradient(white, white);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: 0% 3px;
+
+        transition: all 0.3s ease-out 0.1s;
+
+        &:hover {
+            background-color: $color-secundario;
+            color: black;
+            @include vendor-animation(subrayar 0.3s ease-out forwards);
+        }
+    }
+}
+
+// PREGUNTA 2: 
+.tarjetas-servicios {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+
+    h2 {
+        color: $color-primario;
+        margin-bottom: 30px;
+    }
+}
+
+.contenedor-tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+
+@keyframes fadeUpEntrance {
+    0% {
+        opacity: 0;
+        @include vendor-transform(translateY(40px));
+    }
+
+    100% {
+        opacity: 1;
+        @include vendor-transform(translateY(0));
+    }
+}
+
+.tarjeta {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+
+    opacity: 0;
+    @include vendor-animation(fadeUpEntrance 0.6s ease-out forwards);
+
+    h3 {
+    margin-top: 0;
+    color: $color-primario;
+  }
+}
+
+@for $i from 1 through 3 {
+    .tarjeta:nth-of-type(#{$i}) {
+        -webkit-animation-delay: #{$i * 0.1}s;
+        -moz-animation-delay: #{$i * 0.1}s;
+        animation-delay: #{$i * 0.1}s;
+    }
+}
+

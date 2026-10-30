@@ -1,0 +1,121 @@
+body {
+  font-family: sans-serif;
+  background-color: #f4f7fc;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+}
+
+.cabecera-principal {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+}
+.cabecera-principal h1 {
+  margin: 0;
+  color: rgb(17, 67, 206);
+}
+
+@keyframes subrayar {
+  from {
+    background-size: 0% 3px;
+  }
+  to {
+    background-size: 100% 4px;
+  }
+}
+.menu-navegacion {
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+}
+@supports (position: sticky) or (position: -webkit-sticky) {
+  .menu-navegacion {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+}
+.menu-navegacion ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+.menu-navegacion a {
+  display: flex;
+  padding: 10px 40px;
+  background-color: rgb(17, 67, 206);
+  color: white;
+  font-weight: 300;
+  text-decoration: none;
+  border-radius: 5px;
+  background-image: linear-gradient(white, white);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 0% 3px;
+  transition: all 0.3s ease-out 0.1s;
+}
+.menu-navegacion a:hover {
+  background-color: rgb(220, 226, 238);
+  color: black;
+  animation: subrayar 0.3s ease-out forwards;
+}
+
+.tarjetas-servicios {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+.tarjetas-servicios h2 {
+  color: rgb(17, 67, 206);
+  margin-bottom: 30px;
+}
+
+.contenedor-tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+@keyframes fadeUpEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.tarjeta {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  opacity: 0;
+  animation: fadeUpEntrance 0.6s ease-out forwards;
+}
+.tarjeta h3 {
+  margin-top: 0;
+  color: rgb(17, 67, 206);
+}
+
+.tarjeta:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+
+.tarjeta:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.tarjeta:nth-of-type(3) {
+  animation-delay: 0.3s;
+}/*# sourceMappingURL=estilos.css.map */
